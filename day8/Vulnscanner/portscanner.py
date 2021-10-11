@@ -3,14 +3,14 @@ from IPy import IP
 
 
 class PortScan():
-    banner = []
+    banners = []
     open_ports = []
     def __init__(self, target, port_num):
         self.target = target
         self.port_num = port_num
 
     def scan(self):
-        for port in range(1,65535):
+        for port in range(1,500):
             self.scan_port(port)
 
 
@@ -27,7 +27,7 @@ class PortScan():
         try:
             converted_ip = self.check_ip()
             sock = socket.socket()
-            sock.settimeout(0.5)  ##timeoutset lower the time less accuracy
+            sock.settimeout(2)  ##timeoutset lower the time less accuracy
             sock.connect((converted_ip, port))
             self.open_ports.append(port)
             try:
@@ -39,3 +39,8 @@ class PortScan():
 
         except:
             pass
+
+
+
+
+
